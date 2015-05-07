@@ -1,4 +1,6 @@
 function Grabar(nombre,veces)
+%Grabar un archivo de audio de 2 segundos n veces bajo el formato
+%"nombre(n).wav"
 n= 0;
 
     while (n<veces)
@@ -18,16 +20,12 @@ n= 0;
         plot(x)
         disp('Listo.')
 
-        [~, ~, ~, ~ ,~, ~, ~, ~, ~,  ~, ~, ~, z, ~, ~]  = FunIniFin(x,128);
-
-
-        soundsc(z,8000)
-        figure
-        plot(z);
+        
+        soundsc(x,8000)
         str1 = num2str(n);
         ext= '.wav';
         filename = [nombre str1 ext] ;
-        audiowrite(filename,z,Fs)
+        audiowrite(filename,x,Fs)
         n=n+1;
     end
 end
